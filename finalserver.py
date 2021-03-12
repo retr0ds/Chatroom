@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Server for multithreaded (asynchronous) chat application."""
-from socket import AF_INET, socket, SOCK_STREAM
+from socket import AF_INET, socket, SOCK_STREAM,gethostname,gethostbyname
 from threading import Thread
 
 
@@ -46,8 +46,10 @@ def broadcast(msg, prefix=""):  # prefix is for name identification.
         
 clients = {}
 addresses = {}
-
-HOST = '192.168.1.36'
+hostname = gethostname()    
+IPAddr = gethostbyname(hostname)
+print(IPAddr)   
+HOST = IPAddr
 PORT = 4590
 BUFSIZ = 1024
 ADDR = (HOST, PORT)
